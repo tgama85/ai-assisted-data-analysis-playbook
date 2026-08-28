@@ -1,1 +1,0 @@
-# Curadoria de Fontes
