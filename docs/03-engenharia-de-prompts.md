@@ -9,7 +9,9 @@ A biblioteca foi criada para apoiar dois comportamentos do NotebookLM:
 - **Modo Orientador:** ajuda o analista a descobrir o que fazer, em qual ordem, por quê e como validar cada etapa.
 - **Modo Revisor:** avalia algo já produzido, identifica inconsistências, lacunas, riscos, pressupostos não comprovados e validações faltantes.
 
-Nesta etapa, os prompts ainda não foram otimizados por testes comparativos. Eles representam a **versão inicial (V1)** que será experimentada, avaliada e refinada nas próximas fases do projeto.
+Os prompts abaixo representam a **versão inicial (V1)** da biblioteca. Na Etapa 8, três prompts foram avaliados comparativamente em testes controlados: **P01-V1 (problema de negócio)**, **P03-V1 (qualidade dos dados)** e **P08-V1 (visualização de dados)**. Os demais prompts permanecem como biblioteca inicial ainda não submetida a comparação experimental neste projeto.
+
+Os testes não incluíram T04 ou T05. A amostra experimental final foi composta por **T01, T02 e T03**, considerada suficiente para identificar padrões, limitações e oportunidades de refinamento.
 
 ---
 
@@ -626,6 +628,18 @@ Separar os dois comportamentos deverá melhorar a aderência da resposta à fase
 Selecionar apenas as fontes mais relevantes para cada consulta deverá reduzir conteúdo tecnicamente correto, porém fora do escopo da tarefa.
 
 A hipótese H6 surgiu durante o primeiro teste de sanidade do NotebookLM: uma fonte ampla de governança de IA gerou tópicos válidos, mas além do contexto cotidiano de um projeto de Análise de Dados.
+
+---
+
+# Resultados dos testes da V1
+
+| Teste | Prompt | Baseline | Estruturado | Síntese |
+|---|---|---:|---:|---|
+| T01 | P01-V1 — Problema de negócio | 16/18 | 16/18 | Piloto revelou interferência da instrução personalizada do NotebookLM |
+| T02 | P03-V1 — Qualidade dos dados | 11/18 | 16/18 | Ganho claro com restrições, lacunas e estrutura de validação |
+| T03 | P08-V1 — Visualização | 16/18 | 17/18 | Ganho menor, concentrado em justificativa e auditabilidade |
+
+Os resultados completos e as falhas observadas estão documentados em **[Cicatrizes e Troubleshooting](04-cicatrizes-e-troubleshooting.md)**.
 
 ---
 
