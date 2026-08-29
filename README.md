@@ -206,7 +206,8 @@ Foram documentadas falhas reais observadas no uso da IA:
 
 Para utilizar o notebook como ferramenta pública, o projeto inclui uma configuração de produção, condições de uso, prompts de início e checklist de publicação.
 
-**[Guia de Uso Público](docs/06-guia-de-uso-publico.md)**
+**[Guia de Uso Público](docs/06-guia-de-uso-publico.md)**  
+**[Configuração de Produção do Chat](docs/08-configuracao-chat-producao.md)**
 
 ---
 
@@ -239,7 +240,8 @@ ai-assisted-data-analysis-playbook/
 │   ├── 04-cicatrizes-e-troubleshooting.md
 │   ├── 05-miniguia-de-estudo.md
 │   ├── 06-guia-de-uso-publico.md
-│   └── 07-qa-producao-e-limitacoes.md
+│   ├── 07-qa-producao-e-limitacoes.md
+│   └── 08-configuracao-chat-producao.md
 │
 ├── prompts/
 │   └── README.md
