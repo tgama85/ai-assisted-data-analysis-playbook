@@ -6,6 +6,12 @@ Projeto desenvolvido no bootcamp **GenAI & Dados**, da DIO:
 
 https://www.dio.me/bootcamp/bradesco-genai-dados
 
+## 🔗 Experimente o Playbook
+
+**[Abrir o AI-Assisted Data Analysis Playbook no NotebookLM](https://notebook.google.com/notebook/042b5577-9c74-468f-ad39-0c6a744ca108)**
+
+O notebook público está configurado para uso por link. A versão atual é funcional e utilizável, com limitações conhecidas e backlog documentados neste repositório.
+
 ---
 
 ## Sobre o projeto
@@ -203,6 +209,8 @@ Foram documentadas falhas reais observadas no uso da IA:
 ---
 
 # Uso público do NotebookLM
+
+**[Acessar o notebook público](https://notebook.google.com/notebook/042b5577-9c74-468f-ad39-0c6a744ca108)**
 
 Para utilizar o notebook como ferramenta pública, o projeto inclui uma configuração de produção, condições de uso, prompts de início e checklist de publicação.
 
