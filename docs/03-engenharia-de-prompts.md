@@ -665,3 +665,321 @@ Os resultados dos testes e as alterações feitas nos prompts serão registrados
 # Princípio central
 
 > **A IA pode propor, estruturar, explicar, revisar e questionar. O analista continua responsável por validar.**
+
+
+---
+
+# Framework Final de Prompting
+
+Os testes da V1 mostraram que a estrutura inicial era útil, mas não controlava suficientemente inferências plausíveis, thresholds arbitrários, avanço prematuro de escopo, linguagem categórica e transformação de heurísticas em regras.
+
+A arquitetura final do playbook passa a ser:
+
+> **Modo → Escopo → Contexto → Evidências → Lacunas → Tarefa → Restrições epistemológicas → Fontes relevantes → Validação → Entrega**
+
+## Componentes
+
+### 1. Modo
+Define se a IA atuará como **Orientador** ou **Revisor**.
+
+### 2. Escopo
+Delimita a etapa atual do ciclo analítico e impede avanço prematuro para fases não solicitadas.
+
+### 3. Contexto
+Registra apenas informações conhecidas sobre negócio, problema, público, período, dados, ferramentas e regras.
+
+### 4. Evidências
+Define a fronteira factual da resposta: fatos fornecidos, resultados já calculados e regras documentadas.
+
+### 5. Lacunas
+Explicita o que ainda não é conhecido e precisa ser validado.
+
+### 6. Tarefa
+Indica com verbos verificáveis o que a IA deve produzir.
+
+### 7. Restrições epistemológicas
+Define como a IA deve tratar diferentes níveis de certeza e impede que inferências ou exemplos sejam apresentados como fatos.
+
+### 8. Fontes relevantes
+Orienta o uso apenas das fontes realmente pertinentes à tarefa, reduzindo conteúdo correto, porém fora do escopo.
+
+### 9. Validação
+Exige uma revisão antes da resposta final para identificar conclusões sem evidência, regras inventadas, causalidade indevida, thresholds arbitrários e linguagem excessivamente categórica.
+
+### 10. Entrega
+Define o formato final esperado, aumentando consistência e reutilização.
+
+---
+
+## Bloco Transversal de Confiabilidade
+
+Este bloco pode ser reutilizado nos prompts do playbook:
+
+```text
+REGRAS DE CONFIABILIDADE:
+
+1. Use somente informações fornecidas neste contexto ou sustentadas pelas fontes selecionadas.
+
+2. Não complete silenciosamente informações ausentes.
+
+3. Se uma informação necessária não estiver disponível, declare:
+"Informação ausente — necessita validação."
+
+4. Se apresentar uma possibilidade não comprovada, rotule como:
+"Hipótese a testar" ou "Exemplo hipotético".
+
+5. Não invente:
+- colunas;
+- tabelas;
+- stakeholders;
+- regras de negócio;
+- metas;
+- benchmarks;
+- thresholds;
+- fórmulas;
+- resultados.
+
+6. Não transforme associação ou correlação em causalidade.
+
+7. Não transforme uma heurística ou recomendação das fontes em regra universal.
+
+8. Use linguagem proporcional à evidência:
+- "Os dados mostram..." somente para fatos observados;
+- "Os resultados sugerem..." para interpretações;
+- "Uma hipótese a investigar..." para possibilidades;
+- "Não é possível determinar..." quando faltar evidência.
+
+9. Não avance para etapas posteriores do ciclo analítico quando elas não fizerem parte do escopo solicitado.
+
+10. Antes de concluir, verifique se cada afirmação relevante pode ser rastreada até:
+- uma informação fornecida;
+- um resultado calculado;
+- uma regra de negócio documentada;
+- ou uma fonte citada.
+```
+
+---
+
+# Prompts refinados com evidência experimental
+
+Somente os prompts testados comparativamente receberam uma V2. Os demais permanecem na V1 até que haja evidência que justifique uma nova versão.
+
+## P01-V2 — Entendimento do problema de negócio
+
+```text
+MODO: ORIENTADOR
+
+ESCOPO:
+Estamos exclusivamente na etapa de entendimento do problema de negócio.
+Não avance para preparação dos dados, análises estatísticas, escolha de gráficos,
+dashboard ou storytelling.
+
+CONTEXTO:
+Contexto do negócio:
+[descreva]
+
+Demanda recebida:
+[descreva]
+
+Stakeholders CONFIRMADOS:
+[descreva ou informe "nenhum além dos fornecidos"]
+
+EVIDÊNCIAS DISPONÍVEIS:
+[registre somente fatos conhecidos]
+
+LACUNAS CONHECIDAS:
+[registre informações ausentes ou informe "a identificar"]
+
+OBJETIVO:
+Transformar a demanda em um problema analítico claro e investigável.
+
+TAREFA:
+1. identifique o problema central;
+2. diferencie problema de negócio de tarefa técnica;
+3. proponha objetivos analíticos;
+4. formule perguntas de negócio investigáveis;
+5. registre hipóteses que precisam ser testadas;
+6. identifique informações necessárias antes da próxima etapa;
+7. identifique stakeholders adicionais SOMENTE como possíveis stakeholders
+   a confirmar, nunca como stakeholders existentes.
+
+RESTRIÇÕES:
+Aplique as Regras de Confiabilidade do playbook.
+
+Não atribua causas à situação observada.
+Não presuma política comercial, estrutura organizacional ou metas.
+Não proponha técnicas, gráficos ou dashboards nesta etapa.
+
+VALIDAÇÃO:
+Classifique cada afirmação relevante como:
+Fato fornecido / Inferência / Hipótese a testar / Informação ausente.
+
+ENTREGA:
+Problema
+→ Objetivos
+→ Perguntas analíticas
+→ Hipóteses a testar
+→ Lacunas
+→ Perguntas para os stakeholders
+→ Critério para avançar ao entendimento dos dados.
+```
+
+### Motivo da V2
+O T01 mostrou avanço prematuro para análise, visualização e storytelling e revelou a necessidade de controlar explicitamente o **escopo** da etapa.
+
+---
+
+## P03-V2 — Qualidade dos dados
+
+```text
+MODO: ORIENTADOR
+
+ESCOPO:
+Avaliação de qualidade dos dados antes de qualquer tratamento.
+
+CONTEXTO:
+[descreva dataset e problema]
+
+EVIDÊNCIAS DISPONÍVEIS:
+[insira apenas resultados já observados]
+
+LACUNAS CONHECIDAS:
+[granularidade, regras, metadados etc.]
+
+OBJETIVO:
+Distinguir problemas confirmados, suspeitas e comportamentos legítimos
+antes de decidir qualquer tratamento.
+
+TAREFA:
+Para cada situação:
+
+1. associe a dimensão de qualidade relevante;
+2. classifique como:
+   - problema confirmado;
+   - possível problema;
+   - comportamento potencialmente legítimo;
+   - informação insuficiente;
+3. descreva a evidência disponível;
+4. explique o impacto potencial;
+5. proponha investigação;
+6. indique qual decisão depende de regra de negócio;
+7. proponha como validar a decisão.
+
+RESTRIÇÕES:
+Aplique as Regras de Confiabilidade do playbook.
+
+Não assuma chaves sem evidência.
+Não crie campos que não existam no schema.
+Não crie thresholds ou faixas arbitrárias.
+Não considere nulo, duplicidade aparente, outlier ou valor negativo
+automaticamente como erro.
+
+Se precisar exemplificar uma coluna ou regra inexistente, rotule claramente:
+"Exemplo hipotético — não presente nos dados fornecidos."
+
+ENTREGA:
+Prioridade
+→ Classificação
+→ Evidência
+→ Impacto
+→ Investigação
+→ Decisão necessária
+→ Validação.
+```
+
+### Motivo da V2
+O T02 mostrou ganho claro do prompting estruturado, mas também revelou preenchimento de lacunas com colunas plausíveis e criação de thresholds não fornecidos.
+
+---
+
+## P08-V2 — Visualização de dados
+
+```text
+MODO: ORIENTADOR
+
+ESCOPO:
+Escolha e desenho da visualização.
+Não inferir causas de negócio nem produzir storytelling além do que os dados sustentam.
+
+CONTEXTO:
+Pergunta analítica:
+[descreva]
+
+Dados:
+[forneça]
+
+Público:
+[descreva]
+
+EVIDÊNCIAS DISPONÍVEIS:
+[registre apenas fatos observados]
+
+LACUNAS:
+[metas, benchmarks, contexto etc.]
+
+OBJETIVO:
+Selecionar a visualização que represente corretamente os dados
+e responda à pergunta analítica.
+
+TAREFA:
+1. recomende o tipo de gráfico;
+2. explique a relação entre gráfico e pergunta;
+3. indique ordenação, eixo, escala, rótulos e tratamento do zero;
+4. avalie uso funcional da cor;
+5. proponha alternativas adequadas;
+6. explique quais visuais seriam inadequados e por quê;
+7. diferencie o que o gráfico permite observar daquilo que não permite concluir.
+
+RESTRIÇÕES:
+Aplique as Regras de Confiabilidade do playbook.
+
+Não invente benchmark.
+Não classifique desempenho como "saudável", "crítico" ou equivalente
+sem uma regra fornecida.
+
+Não atribua causa aos valores apresentados.
+Não transforme heurísticas de design em regras universais.
+Não dependa exclusivamente de cor para comunicar significado.
+
+VALIDAÇÃO:
+Separe:
+
+O gráfico mostra
+vs.
+O gráfico NÃO permite concluir.
+
+ENTREGA:
+Pergunta
+→ Visual recomendado
+→ Justificativa
+→ Construção
+→ Alternativas
+→ Visuais a evitar
+→ O que podemos afirmar
+→ O que não podemos afirmar
+→ Riscos de interpretação.
+```
+
+### Motivo da V2
+O T03 mostrou que um gráfico tecnicamente correto pode ser acompanhado por storytelling analiticamente incorreto. A V2 separa explicitamente observação visual de conclusão de negócio.
+
+---
+
+# Status atual da biblioteca
+
+| Prompt | Versão recomendada | Evidência experimental |
+|---|---|---|
+| P01 — Problema de negócio | **V2** | T01 |
+| P02 — Entendimento dos dados | V1 | Não testado comparativamente |
+| P03 — Qualidade dos dados | **V2** | T02 |
+| P04 — Preparação e transformação | V1 | Não testado comparativamente |
+| P05 — Análise exploratória | V1 | Não testado comparativamente |
+| P06 — Métricas e KPIs | V1 | Não testado comparativamente |
+| P07 — Estatística e relações | V1 | Não testado comparativamente |
+| P08 — Visualização de dados | **V2** | T03 |
+| P09 — Dashboard | V1 | Não testado comparativamente |
+| P10 — Insights e recomendações | V1 | Não testado comparativamente |
+| P11 — Storytelling e comunicação | V1 | Não testado comparativamente |
+| P12 — Documentação e QA | V1 | Não testado comparativamente |
+
+> **Versionamento só ocorre quando existe um motivo documentado para a mudança.**
