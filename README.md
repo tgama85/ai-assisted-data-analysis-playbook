@@ -1,3 +1,6 @@
+![caoa ai assist data analysis](assets/capa-ai-assit-data-analysis.png)
+
+
 # AI-Assisted Data Analysis Playbook
 
 ![Capa do AI-Assisted Data Analysis Playbook](assets/notebooklm-banner.webp)
