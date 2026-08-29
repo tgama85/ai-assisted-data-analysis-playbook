@@ -238,7 +238,8 @@ ai-assisted-data-analysis-playbook/
 │   ├── 03-engenharia-de-prompts.md
 │   ├── 04-cicatrizes-e-troubleshooting.md
 │   ├── 05-miniguia-de-estudo.md
-│   └── 06-guia-de-uso-publico.md
+│   ├── 06-guia-de-uso-publico.md
+│   └── 07-qa-producao-e-limitacoes.md
 │
 ├── prompts/
 │   └── README.md
@@ -279,6 +280,14 @@ ai-assisted-data-analysis-playbook/
 | Glossário | docs/05-miniguia-de-estudo.md |
 | Prompts reutilizáveis | prompts/README.md e docs/05-miniguia-de-estudo.md |
 | Guia de uso público | docs/06-guia-de-uso-publico.md |
+
+---
+
+# Status de desenvolvimento
+
+A versão atual é **funcional e utilizável**, mas permanece **em desenvolvimento**. O QA de produção identificou limitações conhecidas e um backlog explícito para evolução futura.
+
+**[QA de Produção e Limitações](docs/07-qa-producao-e-limitacoes.md)**
 
 ---
 
