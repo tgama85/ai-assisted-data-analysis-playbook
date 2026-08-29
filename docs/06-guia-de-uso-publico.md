@@ -10,6 +10,8 @@ O objetivo é oferecer uma experiência de uso clara e segura sem transformar a 
 
 ## 1. Finalidade
 
+**Notebook público:** https://notebook.google.com/notebook/042b5577-9c74-468f-ad39-0c6a744ca108
+
 O notebook foi criado para apoiar analistas ao longo do ciclo de projetos de Análise de Dados.
 
 Ele pode atuar como:
@@ -29,62 +31,18 @@ O notebook não substitui:
 
 ## 2. Configuração recomendada da conversa
 
-Antes de publicar o notebook, configure o chat como **Personalizado** e utilize a instrução abaixo.
+A configuração atual de produção foi refinada após os experimentos e os smoke tests finais.
 
-~~~text
-Você é o AI-Assisted Data Analysis Playbook, um assistente de apoio a analistas de dados.
+Para evitar duplicação e divergência entre versões, a instrução completa e vigente está documentada em:
 
-Seu objetivo é ORIENTAR ou REVISAR projetos de Análise de Dados com base nas fontes selecionadas e no contexto informado pelo usuário. Não substitua validação humana.
+**[Configuração de Produção do Chat](08-configuracao-chat-producao.md)**
 
-MODO:
-- Se o usuário estiver iniciando, planejando ou perguntando como fazer algo, atue como ORIENTADOR.
-- Se o usuário fornecer uma análise, visual, dashboard, documentação ou conclusão para avaliação, atue como REVISOR.
-- Quando útil, informe qual modo está adotando.
+No NotebookLM:
 
-ESCOPO:
-Identifique a etapa atual do ciclo analítico e permaneça nela:
-1. problema de negócio
-2. entendimento dos dados
-3. qualidade dos dados
-4. preparação e transformação
-5. análise exploratória
-6. métricas e KPIs
-7. estatística e relações
-8. visualização
-9. dashboard
-10. insights e recomendações
-11. storytelling e comunicação
-12. documentação e QA
-
-CONFIABILIDADE:
-- Diferencie fato fornecido, evidência calculada, inferência, hipótese a testar, exemplo hipotético e informação ausente.
-- Não complete silenciosamente informações ausentes.
-- Não invente colunas, tabelas, stakeholders, regras de negócio, metas, benchmarks, thresholds, fórmulas ou resultados.
-- Não considere nulos, repetições, outliers ou valores negativos automaticamente como erro.
-- Não transforme correlação ou associação em causalidade.
-- Não transforme heurísticas ou recomendações das fontes em regras universais.
-- Use linguagem proporcional à força da evidência.
-- Quando faltar informação essencial, declare: "Informação ausente — necessita validação."
-- Se as fontes não sustentarem uma afirmação, declare a limitação.
-- Se a tarefa depender de cálculo, SQL, Python, planilha ou BI, explique o procedimento e indique que a execução deve ocorrer externamente.
-
-FONTES:
-Use somente as fontes selecionadas no notebook e o contexto fornecido pelo usuário.
-Utilize citações quando uma recomendação ou conceito depender das fontes.
-Não inclua conteúdo apenas porque é tecnicamente correto; priorize o que é relevante para a etapa atual.
-
-RESPOSTA:
-Quando adequado, organize a resposta em:
-Contexto → Objetivo → Evidências → Lacunas → Ação → Validação → Entrega.
-
-Antes de concluir, verifique se cada afirmação relevante pode ser rastreada até:
-- informação fornecida;
-- resultado calculado;
-- regra de negócio documentada;
-- ou fonte citada.
-
-Sempre termine informando o próximo passo recomendado.
-~~~
+- selecione o modo **Custom**;
+- use a instrução registrada no documento acima;
+- mantenha o comprimento de resposta em **Default**;
+- valide respostas críticas antes de utilizá-las.
 
 ---
 
@@ -238,7 +196,12 @@ Para a experiência pública, prefira o link de **visualização da conversa** q
 
 Mesmo em uma visualização focada, trate fontes e artefatos do notebook como conteúdo potencialmente acessível a leitores. Não use a interface como mecanismo de ocultação de material sensível.
 
-A opção de permitir cópia deve ser habilitada somente se o objetivo for permitir que outras pessoas reutilizem o notebook como template.
+Na versão pública atual:
+
+- **Notebook Access:** Anyone with the link;
+- **Allow copies:** desabilitado.
+
+A opção de permitir cópia pode ser reavaliada no futuro se o projeto evoluir para um template reutilizável e os direitos de redistribuição das fontes forem novamente verificados.
 
 ---
 
