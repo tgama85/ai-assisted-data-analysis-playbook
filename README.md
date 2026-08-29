@@ -202,6 +202,14 @@ Foram documentadas falhas reais observadas no uso da IA:
 
 ---
 
+# Uso público do NotebookLM
+
+Para utilizar o notebook como ferramenta pública, o projeto inclui uma configuração de produção, condições de uso, prompts de início e checklist de publicação.
+
+**[Guia de Uso Público](docs/06-guia-de-uso-publico.md)**
+
+---
+
 # Miniguia de estudo
 
 A entrega consolidada contém:
@@ -229,7 +237,8 @@ ai-assisted-data-analysis-playbook/
 │   ├── 02-curadoria-de-fontes.md
 │   ├── 03-engenharia-de-prompts.md
 │   ├── 04-cicatrizes-e-troubleshooting.md
-│   └── 05-miniguia-de-estudo.md
+│   ├── 05-miniguia-de-estudo.md
+│   └── 06-guia-de-uso-publico.md
 │
 ├── prompts/
 │   └── README.md
@@ -269,6 +278,7 @@ ai-assisted-data-analysis-playbook/
 | Resumos estruturados | docs/05-miniguia-de-estudo.md |
 | Glossário | docs/05-miniguia-de-estudo.md |
 | Prompts reutilizáveis | prompts/README.md e docs/05-miniguia-de-estudo.md |
+| Guia de uso público | docs/06-guia-de-uso-publico.md |
 
 ---
 
