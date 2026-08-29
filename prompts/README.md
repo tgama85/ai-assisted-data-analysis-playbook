@@ -2,20 +2,21 @@
 
 Esta pasta funciona como índice da biblioteca de prompts do **AI-Assisted Data Analysis Playbook**.
 
-A versão completa e documentada dos prompts está em:
+A documentação completa, incluindo V1, testes, framework final e versões refinadas, está em:
 
-**[Engenharia de Prompts — V1](../docs/03-engenharia-de-prompts.md)**
+**[Engenharia de Prompts](../docs/03-engenharia-de-prompts.md)**
 
 ---
 
 ## Como usar
 
 1. escolha o módulo correspondente à etapa do projeto;
-2. defina o **Modo Orientador** ou **Modo Revisor**, quando aplicável;
-3. substitua os campos entre colchetes pelas informações reais do projeto;
-4. forneça apenas evidências e regras de negócio conhecidas;
-5. mantenha as restrições e critérios de validação;
-6. valide a resposta antes de utilizá-la em uma entrega.
+2. utilize a **versão recomendada** indicada neste índice;
+3. defina o **Modo Orientador** ou **Modo Revisor**, quando aplicável;
+4. substitua os campos entre colchetes pelas informações reais do projeto;
+5. forneça apenas evidências e regras de negócio conhecidas;
+6. aplique o **Bloco Transversal de Confiabilidade**;
+7. valide a resposta antes de utilizá-la em uma entrega.
 
 ### Modos
 
@@ -27,36 +28,36 @@ Use quando já existir uma análise, metodologia, visual, dashboard ou documenta
 
 ---
 
-## Estrutura-base
+## Framework final
 
-> **Contexto → Objetivo → Evidências → Lacunas → Ação → Validação → Entrega**
+> **Modo → Escopo → Contexto → Evidências → Lacunas → Tarefa → Restrições epistemológicas → Fontes relevantes → Validação → Entrega**
 
-Os prompts também podem incluir **Modo** e **Restrições**.
+O framework surgiu a partir dos testes e cicatrizes documentados no projeto.
 
 ---
 
-## Índice da V1
+## Versões recomendadas
 
-| ID | Prompt | Modo |
-|---|---|---|
-| P01-V1 | Entendimento do problema de negócio | Orientador / Revisor |
-| P02-V1 | Entendimento dos dados | Orientador / Revisor |
-| P03-V1 | Qualidade dos dados | Orientador / Revisor |
-| P04-V1 | Preparação e transformação | Orientador / Revisor |
-| P05-V1 | Análise exploratória | Orientador / Revisor |
-| P06-V1 | Métricas e KPIs | Orientador / Revisor |
-| P07-V1 | Análise estatística e relações | Orientador / Revisor |
-| P08-V1 | Visualização de dados | Orientador / Revisor |
-| P09-V1 | Dashboard | Orientador / Revisor |
-| P10-V1 | Insights e recomendações | Orientador / Revisor |
-| P11-V1 | Storytelling e comunicação | Orientador / Revisor |
-| P12-V1 | Documentação e QA | Revisor |
+| ID | Prompt | Versão recomendada | Status |
+|---|---|---|---|
+| P01 | Entendimento do problema de negócio | **P01-V2** | Refinado após T01 |
+| P02 | Entendimento dos dados | P02-V1 | Não testado comparativamente |
+| P03 | Qualidade dos dados | **P03-V2** | Refinado após T02 |
+| P04 | Preparação e transformação | P04-V1 | Não testado comparativamente |
+| P05 | Análise exploratória | P05-V1 | Não testado comparativamente |
+| P06 | Métricas e KPIs | P06-V1 | Não testado comparativamente |
+| P07 | Análise estatística e relações | P07-V1 | Não testado comparativamente |
+| P08 | Visualização de dados | **P08-V2** | Refinado após T03 |
+| P09 | Dashboard | P09-V1 | Não testado comparativamente |
+| P10 | Insights e recomendações | P10-V1 | Não testado comparativamente |
+| P11 | Storytelling e comunicação | P11-V1 | Não testado comparativamente |
+| P12 | Documentação e QA | P12-V1 | Não testado comparativamente |
 
 ---
 
 ## Convenção de versionamento
 
-As revisões serão identificadas como:
+As revisões são identificadas como:
 
 ```text
 P01-V1
@@ -64,11 +65,19 @@ P01-V2
 P01-V3
 ```
 
-Cada alteração deverá ser justificada por evidências dos testes.
+Uma nova versão só deve ser criada quando houver um motivo documentado.
 
-O histórico esperado é:
+Histórico esperado:
 
-> **Prompt inicial → problema encontrado → alteração → novo resultado**
+> **Prompt inicial → problema encontrado → evidência → alteração → nova versão**
+
+---
+
+## Bloco Transversal de Confiabilidade
+
+As versões finais devem seguir regras que impeçam a IA de preencher silenciosamente lacunas, inventar regras, criar thresholds arbitrários, tratar hipótese como fato ou usar linguagem mais categórica do que a evidência permite.
+
+O bloco completo está documentado em **[Engenharia de Prompts](../docs/03-engenharia-de-prompts.md#bloco-transversal-de-confiabilidade)**.
 
 ---
 
