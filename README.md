@@ -1,5 +1,7 @@
 # AI-Assisted Data Analysis Playbook
 
+![Capa do AI-Assisted Data Analysis Playbook](assets/notebooklm-banner.webp)
+
 > Um playbook para integrar Inteligência Artificial ao ciclo completo de projetos de Análise de Dados de forma crítica, estruturada e verificável.
 
 Projeto desenvolvido no bootcamp **GenAI & Dados**, da DIO:
@@ -258,7 +260,8 @@ ai-assisted-data-analysis-playbook/
 │   └── README.md
 │
 └── assets/
-    └── README.md
+    ├── README.md
+    └── notebooklm-banner.webp
 ~~~
 
 ---
