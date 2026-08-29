@@ -372,21 +372,13 @@ As cinco fontes selecionadas formam os seguintes pilares:
 
 **Metodologia analítica**
 
-+
++ **Qualidade e preparação dos dados**
 
-**Qualidade e preparação dos dados**
++ **Visualização e comunicação**
 
-+
++ **Engenharia de prompts**
 
-**Visualização e comunicação**
-
-+
-
-**Engenharia de prompts**
-
-+
-
-**Governança e validação da IA**
++ **Governança e validação da IA**
 
 Em conjunto, elas fornecem a base necessária para que o NotebookLM atue nos dois comportamentos definidos para o projeto:
 
