@@ -18,6 +18,10 @@ Somente recursos visuais sem dados pessoais, credenciais, e-mails, fotos de perf
 
 Capturas contendo informações pessoais foram deliberadamente excluídas do escopo do repositório.
 
+## Assets atuais
+
+- `notebooklm-banner.webp` — capa/banner oficial do **AI-Assisted Data Analysis Playbook**, utilizada como identidade visual do projeto e no README.
+
 ## Status atual
 
 A identidade visual já é utilizada no NotebookLM público. Novos assets seguros podem ser adicionados futuramente conforme o projeto evoluir.
